@@ -1,5 +1,7 @@
 package ca.uwindsor.css.ctf;
 
+import java.util.*;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -7,6 +9,14 @@ import org.bukkit.entity.Player;
 import net.md_5.bungee.api.ChatColor;
 
 public class CommandGetFlag {
+
+	public static List<String> onTabComplete(String[] args) {
+		if (args.length == 2) {
+			return new ArrayList<String>(TeamManager.getTeamNames());
+		}
+
+		return Collections.emptyList();
+	}
 
 	public static boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		

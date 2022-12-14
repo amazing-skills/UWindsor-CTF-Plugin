@@ -1,11 +1,25 @@
 package ca.uwindsor.css.ctf;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import net.md_5.bungee.api.ChatColor;
 
 public class CommandAddTeam {
 	
+	public static List<String> onTabComplete(String[] args) {
+		if (args.length == 2) {
+			return Arrays.asList("<teamName>");
+		} else if (args.length == 3) {
+			return TeamManager.availableColors;
+		}
+
+		return Collections.emptyList();
+	}
+
 	public static boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		
 		//Check if missing teamName or teamColor

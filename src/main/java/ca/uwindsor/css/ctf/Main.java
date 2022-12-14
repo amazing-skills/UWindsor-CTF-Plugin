@@ -28,8 +28,9 @@ public class Main extends JavaPlugin {
     	
     	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
     	//COMMAND AND LISTENERS
-    	this.getCommand("ctf").setExecutor(new TeamsCommandManager());
-    	getServer().getPluginManager().registerEvents(new FlagBreakListener(), this);
+    	getCommand("ctf").setExecutor(new TeamsCommandManager());
+		getCommand("ctf").setTabCompleter(new CommandAutocomplete());
+		getServer().getPluginManager().registerEvents(new FlagBreakListener(), this);
     	getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
     	getServer().getPluginManager().registerEvents(new FlagIndirectBreakListener(), this);
     	getServer().getPluginManager().registerEvents(new PlayerDamageListener(), this);
