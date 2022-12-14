@@ -1,8 +1,8 @@
 main: ca.uwindsor.css.ctf.Main
 name: WindsorCTF
 version: 2.0
-api-version: 1.14
+api-version: 1.19
 commands:
-    teams:
-       description: Teams
-       usage: /teams
+  teams:
+    description: Teams
+    usage: /teams
