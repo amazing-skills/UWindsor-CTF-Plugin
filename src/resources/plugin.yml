@@ -3,6 +3,6 @@ name: WindsorCTF
 version: 2.0
 api-version: 1.19
 commands:
-  teams:
-    description: Teams
-    usage: /teams
+  ctf:
+    description: Capture the flag
+    usage: /ctf
