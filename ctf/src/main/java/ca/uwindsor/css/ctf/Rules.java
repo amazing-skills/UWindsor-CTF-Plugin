@@ -35,14 +35,11 @@ public class Rules implements Listener {
 
         if (entity instanceof Player) {
             Player player = (Player) entity;
-            System.out.println("isPlayer");
 
             // If the player is on a team, do nothing
             if (!TeamManager.playerHasTeam(player))
                 return;
 
-            System.out.println("hasTeam");
-            System.out.println(isEnchanted(event.getCurrentItem()));
             // Warn the player and unenchant the item. Note that the item will
             // be null if it is thrown out of the inventory
             if (event.getCurrentItem() != null && isEnchanted(event.getCurrentItem())) {
@@ -67,8 +64,6 @@ public class Rules implements Listener {
         if (!TeamManager.playerHasTeam(player))
             return;
 
-        System.out.println("hasTeam");
-        System.out.println(isEnchanted(event.getItem()));
         // Warn the player and unenchant the item
         if (isEnchanted(event.getItem())) {
             player.sendMessage(

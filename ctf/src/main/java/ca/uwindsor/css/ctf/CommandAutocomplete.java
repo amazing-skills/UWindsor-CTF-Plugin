@@ -12,7 +12,8 @@ public class CommandAutocomplete implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
-            return Arrays.asList("create", "list", "add", "remove", "get", "info", "getflag", "setflag", "help", "delete", "home", "setscore", "pvp", "start");
+            return Arrays.asList("create", "enforce", "list", "add", "remove", "get", "info", "getflag", "setflag",
+                    "help", "delete", "home", "setscore", "pvp", "start");
         }
 
         if (args.length >= 2) {

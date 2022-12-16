@@ -24,6 +24,9 @@ public class TeamsCommandManager implements CommandExecutor {
 			} else {
 				denyPermissions(sender);
 			}
+		} else if (subCommand.equalsIgnoreCase("enforce")) {
+			Rules rules = new Rules();
+			rules.enforceRules();
 		} else if (subCommand.equalsIgnoreCase("list")) {	//	/teams list
 			//list teams
 			CommandList.onCommand(sender, command, label, args);
@@ -100,6 +103,7 @@ public class TeamsCommandManager implements CommandExecutor {
 			message += "\n" + ChatColor.AQUA + "/teams home" + ChatColor.GREEN + " - teleport to your flag";
 			message += "\n" + ChatColor.AQUA + "/teams create <teamName> <teamColor>" + ChatColor.GREEN + " - create new a team with the specified name/color";
 			message += "\n" + ChatColor.AQUA + "/teams delete <teamName>" + ChatColor.GREEN + " - delete a team completely (removes members as well)";
+			message += "\n" + ChatColor.AQUA + "/teams enforce" + ChatColor.GREEN + " - Enforces the rules upon all players (i.e. unenchants everything)";
 			message += "\n" + ChatColor.AQUA + "/teams list" + ChatColor.GREEN + " - lists all of the current teams";
 			message += "\n" + ChatColor.AQUA + "/teams add/remove <player> <team>" + ChatColor.GREEN + " - add/remove user to/from specified team";
 			message += "\n" + ChatColor.AQUA + "/teams setFlag <teamName>" + ChatColor.GREEN + " - set the location of the specified team's flag";
