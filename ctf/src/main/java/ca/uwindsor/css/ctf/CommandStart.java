@@ -45,6 +45,12 @@ public class CommandStart {
 				} else {
 					board.getObjective("Scoreboard").getScore(ChatColor.BOLD + "Timer (seconds)").setScore(count);
 				}
+
+				if (count == 60) {
+					Bukkit.broadcastMessage(ChatColor.GRAY
+							+ "A reminder to set your spawn point in the provided beds, the ctf game starts in 1 minute");
+				}
+
 				// Countdown ends
 				if (count == 0) {
 					board.resetScores(ChatColor.BOLD + "Timer (seconds)");
