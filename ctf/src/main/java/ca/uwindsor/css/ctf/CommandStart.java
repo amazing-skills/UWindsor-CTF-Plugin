@@ -1,6 +1,7 @@
 package ca.uwindsor.css.ctf;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -15,7 +16,8 @@ public class CommandStart {
 		try {
 			int timeInSeconds = Integer.parseInt(args[1]);
 			addTimer(timeInSeconds);
-			sender.sendMessage(ChatColor.GREEN + "Countdown started for " + ChatColor.AQUA + timeInSeconds + ChatColor.GREEN + " seconds from now. PvP will be automatically enabled.");
+			sender.sendMessage(ChatColor.GREEN + "Countdown started for " + ChatColor.AQUA + timeInSeconds
+					+ ChatColor.GREEN + " seconds from now. PvP will be automatically enabled.");
 		} catch (IndexOutOfBoundsException e) {
 			sender.sendMessage(ChatColor.RED + "Invalid use of command. /teams start <countdownTime>");
 		}
@@ -27,10 +29,12 @@ public class CommandStart {
 		board.getObjective("Scoreboard").getScore(" ").setScore(1);
 		new BukkitRunnable() {
 			int count = timeInSeconds;
+
 			public void run() {
 				count--;
 				if (count > 60) {
-					board.getObjective("Scoreboard").getScore(ChatColor.BOLD + "Timer (minutes)").setScore((int) Math.ceil(count / 60f));
+					board.getObjective("Scoreboard").getScore(ChatColor.BOLD + "Timer (minutes)")
+							.setScore((int) Math.ceil(count / 60f));
 				} else if (count == 60) {
 					board.resetScores(ChatColor.BOLD + "Timer (minutes)");
 				} else if (count <= 10) {
@@ -45,16 +49,31 @@ public class CommandStart {
 				if (count == 0) {
 					board.resetScores(ChatColor.BOLD + "Timer (seconds)");
 					board.resetScores(" ");
+
+					// Enforce rules and set players into survival mode
+
+					for (Team team : TeamManager.getTeams()) {
+						for (Player player : team.getPlayers()) {
+							player.setGameMode(GameMode.SURVIVAL);
+						}
+					}
+
+					// Note that we want to enforce rules **after** all players
+					// are in survival, because creative can cause some issues.
+					Rules rules = new Rules();
+					rules.enforceRules();
+
 					for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 						player.playSound(player.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 10f, 0.5f);
 					}
-					Main.pvpEnabled = true;
-					Bukkit.broadcastMessage(ChatColor.DARK_RED + "=====================================================");
-					Bukkit.broadcastMessage(ChatColor.GRAY + "LET THE GAMES BEGIN! PVP IS NOW ENABLED. GOOD LUCK!");
-					Bukkit.broadcastMessage(ChatColor.DARK_RED + "=====================================================");
+					Bukkit.broadcastMessage(
+							ChatColor.DARK_RED + "=====================================================");
+					Bukkit.broadcastMessage(ChatColor.GRAY + "LET THE GAMES BEGIN! GOOD LUCK!");
+					Bukkit.broadcastMessage(
+							ChatColor.DARK_RED + "=====================================================");
 					this.cancel();
 				}
 			}
 		}.runTaskTimer(Main.getPlugin(Main.class), 0L, 20L);
-    }
+	}
 }

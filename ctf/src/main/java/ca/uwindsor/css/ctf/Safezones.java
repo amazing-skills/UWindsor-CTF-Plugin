@@ -20,7 +20,7 @@ public class Safezones {
 		for (String memberName : team.members) {	//Notify members
 			Player member = Bukkit.getServer().getPlayerExact(memberName);
 			if (member != null) {	//If member is offline, this would be null
-				member.sendMessage(ChatColor.GREEN + "Your flag was captured! Your base is now under a 10-minute grace-period where you can recover from your losses"
+				member.sendMessage(ChatColor.GREEN + "Your flag was captured! Your base is now under a 11-minute grace-period where you can recover from your losses"
 						+ " and rebuild. Nobody can enter your area but your team.");
 			}
 		}
@@ -39,7 +39,7 @@ public class Safezones {
 				}
 				Bukkit.broadcastMessage(ChatColor.GREEN + "Team " + team.printTeamName() + ChatColor.GREEN + "'s base is no longer under protection by the grace-period!");
 			}
-		}, 12000L);
+		}, 1200L);
 	}
 
 }

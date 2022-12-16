@@ -70,6 +70,15 @@ public class TeamManager {
 		}
 		return null;
 	}
+
+	/**
+	 * Tests to see if the specified player is in a team
+	 * @param player
+	 * @return
+	 */
+	public static Boolean playerHasTeam(Player player) {
+		return getPlayerTeam(player) != null;
+	}
 	
 	
 	public static ChatColor getPlayerColor(Player player) {

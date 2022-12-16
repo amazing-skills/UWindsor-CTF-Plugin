@@ -38,7 +38,7 @@ public class SafezoneListener implements Listener {
 				} else {
 					violationsPerPlayer.put(player, 1);
 				}
-				player.sendMessage(ChatColor.RED + "You cannot enter this area! Team " + team.printTeamName() + ChatColor.RED + " is currently on a grace-period for 10"
+				player.sendMessage(ChatColor.RED + "You cannot enter this area! Team " + team.printTeamName() + ChatColor.RED + " is currently on a grace-period for 1"
 						+ " minutes after flag has been captured to recover!");
 			}
 			

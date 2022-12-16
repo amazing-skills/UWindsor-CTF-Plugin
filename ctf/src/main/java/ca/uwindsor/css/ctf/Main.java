@@ -37,6 +37,7 @@ public class Main extends JavaPlugin {
     	getServer().getPluginManager().registerEvents(new FlagCarrierListener(), this);
     	getServer().getPluginManager().registerEvents(new SafezoneListener(), this);
     	getServer().getPluginManager().registerEvents(new CommandHome(), this);
+		getServer().getPluginManager().registerEvents(new Rules(), this);
     	
     	Main.board = Bukkit.getScoreboardManager().getMainScoreboard();
     	
