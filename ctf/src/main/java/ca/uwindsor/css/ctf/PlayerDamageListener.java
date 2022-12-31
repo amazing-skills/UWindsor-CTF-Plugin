@@ -51,6 +51,12 @@ public class PlayerDamageListener implements Listener {
 		Player player = event.getEntity();
 		CommandHome.cooldown.add(player);
 		BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
+
+		// Teleport them back to their home
+		if (TeamManager.playerHasTeam(player)) {
+			player.teleport(TeamManager.getPlayerTeam(player).getHome());
+		}
+
 		scheduler.scheduleSyncDelayedTask(JavaPlugin.getPlugin(Main.class), new Runnable() {
 			@Override
 			public void run() {
