@@ -54,7 +54,7 @@ public class PlayerDamageListener implements Listener {
 
 		// Teleport them back to their home
 		if (TeamManager.playerHasTeam(player)) {
-			player.teleport(TeamManager.getPlayerTeam(player).getHome());
+			player.teleport(TeamManager.getPlayerTeam(player).getBannerSpawn());
 		}
 
 		scheduler.scheduleSyncDelayedTask(JavaPlugin.getPlugin(Main.class), new Runnable() {
