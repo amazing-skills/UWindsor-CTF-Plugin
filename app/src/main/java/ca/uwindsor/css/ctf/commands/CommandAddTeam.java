@@ -1,4 +1,4 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.commands;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+
+import ca.uwindsor.css.ctf.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class CommandAddTeam {

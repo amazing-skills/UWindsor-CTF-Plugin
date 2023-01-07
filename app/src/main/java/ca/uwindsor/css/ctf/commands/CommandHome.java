@@ -1,4 +1,4 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.commands;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,6 +13,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import ca.uwindsor.css.ctf.Main;
+import ca.uwindsor.css.ctf.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 
 

@@ -1,10 +1,12 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import ca.uwindsor.css.ctf.Main;
+import ca.uwindsor.css.ctf.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class PlayerJoinListener implements Listener {

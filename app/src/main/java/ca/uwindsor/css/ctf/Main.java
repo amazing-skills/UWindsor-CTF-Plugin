@@ -17,6 +17,13 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
+import ca.uwindsor.css.ctf.commands.CommandHome;
+import ca.uwindsor.css.ctf.listeners.FlagBreakListener;
+import ca.uwindsor.css.ctf.listeners.FlagCarrierListener;
+import ca.uwindsor.css.ctf.listeners.FlagIndirectBreakListener;
+import ca.uwindsor.css.ctf.listeners.PlayerDamageListener;
+import ca.uwindsor.css.ctf.listeners.PlayerJoinListener;
+import ca.uwindsor.css.ctf.listeners.SafezoneListener;
 import net.kyori.adventure.text.Component;
 
 public class Main extends JavaPlugin {

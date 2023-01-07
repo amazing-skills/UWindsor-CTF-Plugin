@@ -1,4 +1,4 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -6,6 +6,10 @@ import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import ca.uwindsor.css.ctf.Team;
+import ca.uwindsor.css.ctf.TeamManager;
+
 import org.bukkit.block.Banner;
 import net.md_5.bungee.api.ChatColor;
 

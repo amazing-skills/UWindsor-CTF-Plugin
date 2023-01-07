@@ -1,10 +1,11 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import ca.uwindsor.css.ctf.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class CommandRemovePlayer {

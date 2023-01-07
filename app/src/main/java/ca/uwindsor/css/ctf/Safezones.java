@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import ca.uwindsor.css.ctf.listeners.SafezoneListener;
 import net.md_5.bungee.api.ChatColor;
 
 public class Safezones {

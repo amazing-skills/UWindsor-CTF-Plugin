@@ -1,4 +1,4 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,6 +13,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BannerMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import ca.uwindsor.css.ctf.Main;
+import ca.uwindsor.css.ctf.Safezones;
+import ca.uwindsor.css.ctf.Team;
+import ca.uwindsor.css.ctf.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class FlagBreakListener implements Listener {

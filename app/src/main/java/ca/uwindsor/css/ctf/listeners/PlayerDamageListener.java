@@ -1,4 +1,4 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -10,6 +10,10 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import ca.uwindsor.css.ctf.Main;
+import ca.uwindsor.css.ctf.Team;
+import ca.uwindsor.css.ctf.TeamManager;
+import ca.uwindsor.css.ctf.commands.CommandHome;
 import net.md_5.bungee.api.ChatColor;
 
 public class PlayerDamageListener implements Listener {

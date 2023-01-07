@@ -1,4 +1,4 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.listeners;
 
 import java.util.Hashtable;
 
@@ -7,6 +7,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+import ca.uwindsor.css.ctf.Safezones;
+import ca.uwindsor.css.ctf.Team;
+import ca.uwindsor.css.ctf.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class SafezoneListener implements Listener {

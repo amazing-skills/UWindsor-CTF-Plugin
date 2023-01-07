@@ -1,4 +1,4 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -9,6 +9,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Scoreboard;
 
+import ca.uwindsor.css.ctf.Main;
+import ca.uwindsor.css.ctf.Rules;
+import ca.uwindsor.css.ctf.Team;
+import ca.uwindsor.css.ctf.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class CommandStart {

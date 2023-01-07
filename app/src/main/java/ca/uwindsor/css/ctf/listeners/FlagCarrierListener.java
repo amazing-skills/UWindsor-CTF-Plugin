@@ -1,4 +1,4 @@
-package ca.uwindsor.css.ctf;
+package ca.uwindsor.css.ctf.listeners;
 
 import java.util.List;
 import java.util.ListIterator;
@@ -29,6 +29,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import ca.uwindsor.css.ctf.Main;
+import ca.uwindsor.css.ctf.Safezones;
+import ca.uwindsor.css.ctf.Team;
+import ca.uwindsor.css.ctf.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class FlagCarrierListener implements Listener {

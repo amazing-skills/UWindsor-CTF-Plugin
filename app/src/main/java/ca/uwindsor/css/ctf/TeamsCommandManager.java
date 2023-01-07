@@ -5,6 +5,18 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import ca.uwindsor.css.ctf.commands.CommandAddTeam;
+import ca.uwindsor.css.ctf.commands.CommandDeleteTeam;
+import ca.uwindsor.css.ctf.commands.CommandGetFlag;
+import ca.uwindsor.css.ctf.commands.CommandGetTeam;
+import ca.uwindsor.css.ctf.commands.CommandHome;
+import ca.uwindsor.css.ctf.commands.CommandList;
+import ca.uwindsor.css.ctf.commands.CommandPvP;
+import ca.uwindsor.css.ctf.commands.CommandRemovePlayer;
+import ca.uwindsor.css.ctf.commands.CommandSetFlag;
+import ca.uwindsor.css.ctf.commands.CommandSetScore;
+import ca.uwindsor.css.ctf.commands.CommandSetTeam;
+import ca.uwindsor.css.ctf.commands.CommandStart;
 import net.md_5.bungee.api.ChatColor;
 
 public class TeamsCommandManager implements CommandExecutor {
