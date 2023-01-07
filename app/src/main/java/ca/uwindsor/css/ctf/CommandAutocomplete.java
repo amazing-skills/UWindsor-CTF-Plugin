@@ -1,5 +1,6 @@
 package ca.uwindsor.css.ctf;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -12,8 +13,16 @@ public class CommandAutocomplete implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
-            return Arrays.asList("create", "enforce", "list", "add", "remove", "get", "info", "getflag", "setflag",
+            List<String> commands = Arrays.asList("create", "enforce", "list", "add", "remove", "get", "info",
+                    "getflag", "setflag",
                     "help", "delete", "home", "setscore", "pvp", "start");
+            ArrayList<String> completions = new ArrayList<>();
+
+            for (String s : commands)
+                if (s.toLowerCase().contains(args[0].toLowerCase()))
+                    completions.add(s);
+
+            return completions;
         }
 
         if (args.length >= 2) {
@@ -42,9 +51,17 @@ public class CommandAutocomplete implements TabCompleter {
             } else if (args[0].equalsIgnoreCase("setscore")) {
                 return Arrays.asList("<team>", "<score>");
             } else if (args[0].equalsIgnoreCase("pvp")) {
-                return Arrays.asList("<team>", "<true/false>");
+                if (args.length == 2)
+                    return Arrays.asList("true", "false");
             } else if (args[0].equalsIgnoreCase("start")) {
-                return Arrays.asList("");
+                List<Integer> commonTimeMinutes = Arrays.asList(0, 1, 2, 3, 5, 10, 15, 20, 30);
+                ArrayList<String> commonTimeString = new ArrayList<>();
+
+                for (int i : commonTimeMinutes) {
+                    commonTimeString.add(Integer.toString(i * 60));
+                }
+
+                return commonTimeString;
             }
         }
 

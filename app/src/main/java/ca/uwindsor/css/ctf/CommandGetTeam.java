@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import net.md_5.bungee.api.ChatColor;
 
 public class CommandGetTeam {
-	
+
 	public static List<String> onTabComplete(String[] args) {
 		if (args.length == 2) {
 			// <player>
@@ -20,7 +20,8 @@ public class CommandGetTeam {
 
 			// Iterate over the collection of players and add each player's name to the list
 			for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-				playerNames.add(player.getName());
+				if (player.getName().contains(args[1]))
+					playerNames.add(player.getName());
 			}
 
 			return playerNames;
@@ -30,9 +31,9 @@ public class CommandGetTeam {
 	}
 
 	public static boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		
+
 		Player player;
-		
+
 		if (args.length == 1) {
 			player = (Player) sender;
 		} else {
@@ -42,12 +43,14 @@ public class CommandGetTeam {
 		if (player == null) {
 			sender.sendMessage(ChatColor.RED + "Invalid user!");
 		} else if (TeamManager.getPlayerTeam(player) == null) {
-			sender.sendMessage(ChatColor.GREEN + "User " + player.getDisplayName() + ChatColor.GREEN + " is not part of a team.");
+			sender.sendMessage(
+					ChatColor.GREEN + "User " + player.getDisplayName() + ChatColor.GREEN + " is not part of a team.");
 		} else {
-			sender.sendMessage(ChatColor.GREEN + "Player "+ player.getDisplayName() + ChatColor.GREEN + " is part of team " + TeamManager.getPlayerTeam(player).printTeamName() + ChatColor.GREEN + ".");
+			sender.sendMessage(ChatColor.GREEN + "Player " + player.getDisplayName() + ChatColor.GREEN
+					+ " is part of team " + TeamManager.getPlayerTeam(player).printTeamName() + ChatColor.GREEN + ".");
 		}
-	
-		 return true;
+
+		return true;
 	}
-	
+
 }
