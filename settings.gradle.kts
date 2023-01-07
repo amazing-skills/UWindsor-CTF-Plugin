@@ -8,4 +8,4 @@
  */
 
 rootProject.name = "ctf"
-include("app")
+include("ctf")
