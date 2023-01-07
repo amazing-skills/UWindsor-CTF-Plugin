@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -54,16 +55,21 @@ public class PlayerDamageListener implements Listener {
 		CommandHome.cooldown.add(player);
 		BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
 
-		// Teleport them back to their home
-		if (TeamManager.playerHasTeam(player)) {
-			player.teleport(TeamManager.getPlayerTeam(player).getBannerSpawn());
-		}
-
 		scheduler.scheduleSyncDelayedTask(JavaPlugin.getPlugin(Main.class), new Runnable() {
 			@Override
 			public void run() {
 				CommandHome.cooldown.remove(player);
 			}
 		}, 2400);
+	}
+
+	@EventHandler
+	public void onRespawn(PlayerRespawnEvent event) {
+		Player player = event.getPlayer();
+		
+		// Respawn the player at the banners spawnpoint
+		if (TeamManager.playerHasTeam(player)) {
+			event.setRespawnLocation(TeamManager.getPlayerTeam(player).getBannerSpawn());
+		}
 	}
 }
