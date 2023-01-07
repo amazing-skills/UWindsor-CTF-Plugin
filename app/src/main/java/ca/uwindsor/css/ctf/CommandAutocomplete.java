@@ -3,6 +3,7 @@ package ca.uwindsor.css.ctf;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -13,14 +14,26 @@ import ca.uwindsor.css.ctf.commands.CommandAddTeam;
 import ca.uwindsor.css.ctf.commands.CommandGetFlag;
 import ca.uwindsor.css.ctf.commands.CommandGetTeam;
 import ca.uwindsor.css.ctf.commands.CommandSetTeam;
+import ca.uwindsor.css.ctf.commands.Reset;
 
 public class CommandAutocomplete implements TabCompleter {
+    private List<ca.uwindsor.css.ctf.commands.Command> registeredCommands = Arrays.asList(new Reset());
+    private HashMap<String, ca.uwindsor.css.ctf.commands.Command> commandsMap = new HashMap<>();
+
+    private ArrayList<String> commands = new ArrayList<>(
+            Arrays.asList("create", "enforce", "list", "add", "remove", "get", "info",
+                    "getflag", "setflag", "help", "delete", "home", "setscore", "pvp", "start"));
+
+    public CommandAutocomplete() {
+        for (ca.uwindsor.css.ctf.commands.Command command : registeredCommands) {
+            commandsMap.put(command.getName(), command);
+            commands.add(command.getName());
+        }
+    }
+
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
-            List<String> commands = Arrays.asList("create", "enforce", "list", "add", "remove", "get", "info",
-                    "getflag", "setflag",
-                    "help", "delete", "home", "setscore", "pvp", "start");
             ArrayList<String> completions = new ArrayList<>();
 
             for (String s : commands)
@@ -31,6 +44,9 @@ public class CommandAutocomplete implements TabCompleter {
         }
 
         if (args.length >= 2) {
+            if (commandsMap.containsKey(args[0]))
+                return commandsMap.get(args[0]).onTabComplete(args);
+
             if (args[0].equalsIgnoreCase("create")) {
                 return CommandAddTeam.onTabComplete(args);
             } else if (args[0].equalsIgnoreCase("list")) {
