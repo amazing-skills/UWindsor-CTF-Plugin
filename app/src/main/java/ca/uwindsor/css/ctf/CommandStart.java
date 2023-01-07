@@ -52,7 +52,7 @@ public class CommandStart {
 				}
 
 				// Countdown ends
-				if (count == 0) {
+				if (count <= 0) {
 					board.resetScores(ChatColor.BOLD + "Timer (seconds)");
 					board.resetScores(" ");
 

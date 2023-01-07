@@ -14,6 +14,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.*;
 
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.md_5.bungee.api.ChatColor;
 
 public class Team {
@@ -38,7 +39,7 @@ public class Team {
 		this.bannerBlock = null;
 		this.teamColor = teamColor.toUpperCase();
 		this.scoreboardTeam = sb.registerNewTeam(teamName.toUpperCase());
-		this.scoreboardTeam.setPrefix(getColor().toString());
+		this.scoreboardTeam.color(getChatColor());
 		this.flagStolen = false;
 		this.bannerSpawnLocation = new Location(Bukkit.getServer().getWorlds().get(0),0,0,0);
 		this.score = Main.board.getObjective("Scoreboard").getScore(printTeamName() + ":");
@@ -66,8 +67,6 @@ public class Team {
 		members.add(player.getName());
 		player.sendMessage(ChatColor.GREEN + "You've been added to team " + printTeamName() + ChatColor.GREEN + ".");
 		scoreboardTeam.addEntry(player.getName());
-		player.setDisplayName(getColor() + player.getName() + ChatColor.RESET);
-		player.setPlayerListName(getColor() + player.getName() + ChatColor.RESET);
 	}
 	
 	public void addPlayerByName(String playerName) {
@@ -75,8 +74,6 @@ public class Team {
 		Player player = Bukkit.getServer().getPlayerExact(playerName);
 		if (player != null) {
 			scoreboardTeam.addEntry(player.getName());
-			player.setDisplayName(getColor() + player.getName() + ChatColor.RESET);
-			player.setPlayerListName(getColor() + player.getName() + ChatColor.RESET);
 		}
 	}
 	
@@ -85,8 +82,6 @@ public class Team {
 			player.sendMessage(ChatColor.GREEN + "You've been removed from team " + ChatColor.valueOf(teamColor) + ChatColor.BOLD + teamName + 
 			ChatColor.RESET + ChatColor.GREEN + ".");
 			scoreboardTeam.removeEntry(player.getName());
-			player.setDisplayName(player.getName());
-			player.setPlayerListName(player.getName());
 		}
 	}
 	
@@ -209,7 +204,11 @@ public class Team {
 		}
 		return players;
 	}
-	
+
+	public NamedTextColor getChatColor() {
+		return NamedTextColor.NAMES.value(teamColor);
+	}
+
 	public ChatColor getColor() {
 		return ChatColor.valueOf(teamColor);
 	}
